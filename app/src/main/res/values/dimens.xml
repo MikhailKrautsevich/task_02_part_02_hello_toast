@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="standart_margin">8dp</dimen>
-    <dimen name="show_count_text_size">160sp</dimen>
-</resources>
