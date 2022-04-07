@@ -1,5 +1,6 @@
 package com.example.helloconstraint
 
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,8 +12,9 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     private var mCount: Int = 0
-    private var mShowCount: TextView? = null
-    private var mBtnZero : Button? = null
+    private lateinit var mShowCount: TextView
+    private lateinit var mBtnZero: Button
+    private lateinit var mBtnCount: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,22 +43,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showCount() {
-        mShowCount?.text = mCount.toString()
+        mShowCount.text = mCount.toString()
     }
 
-    private fun updateZeroBtnColor(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (mCount > 0) {
-                mBtnZero?.setBackgroundColor(getColor(R.color.purple_200))
-            } else mBtnZero?.setBackgroundColor(getColor(R.color.grey))
-        }
+    private fun updateZeroBtnColor() {
+        if (mCount > 0) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                mBtnZero.setBackgroundColor(getColor(R.color.purple_500))
+            } else mBtnZero.setBackgroundColor(Color.BLUE)
+        } else mBtnZero.setBackgroundColor(Color.GRAY)
     }
 
-    private fun updateCountBtnColor(view: View){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (mCount % 2 == 0) {
-                view.setBackgroundColor(getColor(R.color.green))
-            } else view.setBackgroundColor(getColor(R.color.blue))
-        }
+    private fun updateCountBtnColor(view: View) {
+        if (mCount % 2 == 0) {
+            view.setBackgroundColor(Color.GREEN)
+        } else view.setBackgroundColor(Color.MAGENTA)
+
     }
 }
